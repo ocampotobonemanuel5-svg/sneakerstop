@@ -438,16 +438,13 @@ const GitHubSection = () => {
                 mb: 2,
               }}
             >
-              <strong style={{ color: '#e63946' }}>Desarrollado por:</strong>{' '}
-              Emanuel Ocampo
-            </Typography>
-            <Typography
+    
               sx={{
                 fontSize: { xs: '0.9rem', md: '1rem' },
                 lineHeight: 1.8,
                 mb: 2,
               }}
-            >
+            
               <strong style={{ color: '#e63946' }}>Tecnologías:</strong> React
               18, Material UI, Vite, React Router, Custom Hooks, localStorage
             </Typography>
@@ -457,8 +454,6 @@ const GitHubSection = () => {
                 color: '#ccc',
               }}
             >
-              © 2026 SneakersTop - Todos los derechos reservados | Código
-              disponible en GitHub
             </Typography>
           </Box>
         </Box>
