@@ -9,7 +9,6 @@ import {
   TextField,
   Divider,
   Grid,
-  Paper,
 } from '@mui/material';
 import { useCart } from '../../hooks/useCart';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -20,19 +19,16 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 const Cart = () => {
   const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity, getTotalPrice, clearCart } = useCart();
 
-  // Datos de productos
   const sneakers = [
-    { id: 1, name: "Air Jordan 1 Retro High", brand: "JORDAN", price: 1200, img: "air-jordan.jpg" },
-    { id: 2, name: "Air Jordan 4 Military Black", brand: "JORDAN", price: 1800, img: "air-jordan-4.jpg" },
-    { id: 3, name: "Nike Dunk Low Panda", brand: "NIKE", price: 650, img: "dumk.jpg" },
-    { id: 4, name: "Yeezy Boost 350 V2 Onyx", brand: "ADIDAS", price: 1500, img: "yezy.jpg" },
-    { id: 5, name: "Air Force 1 Low '07 White", brand: "NIKE", price: 550, img: "nike.jpg" },
-    { id: 6, name: "New Balance 550 White Grey", brand: "NEW BALANCE", price: 780, img: "tenis-new-balance.jpg" },
+    { id: 1, name: "Air Jordan 1 Retro High", brand: "JORDAN", price: 1200 },
+    { id: 2, name: "Air Jordan 4 Military Black", brand: "JORDAN", price: 1800 },
+    { id: 3, name: "Nike Dunk Low Panda", brand: "NIKE", price: 650 },
+    { id: 4, name: "Yeezy Boost 350 V2 Onyx", brand: "ADIDAS", price: 1500 },
+    { id: 5, name: "Air Force 1 Low '07 White", brand: "NIKE", price: 550 },
+    { id: 6, name: "New Balance 550 White Grey", brand: "NEW BALANCE", price: 780 },
   ];
 
-  const getProductInfo = (productId) => {
-    return sneakers.find(s => s.id === productId) || { name: "Producto", price: 0 };
-  };
+  const getProductInfo = (productId) => sneakers.find(s => s.id === productId) || { name: "Producto", price: 0 };
 
   const subtotal = getTotalPrice();
   const impuesto = Math.round(subtotal * 0.19);
@@ -43,33 +39,14 @@ const Cart = () => {
     clearCart();
   };
 
-  // SI CARRITO VACÍO
   if (cartItems.length === 0) {
     return (
       <Box sx={{ width: '100%', overflow: 'hidden', minHeight: '80vh' }}>
-        {/* HEADER */}
-        <Box
-          sx={{
-            background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)',
-            color: 'white',
-            py: { xs: 3, md: 5 },
-            px: { xs: 2, md: 0 },
-            mb: { xs: 3, md: 4 },
-            borderBottom: '3px solid #e63946',
-          }}
-        >
+        <Box sx={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)', color: 'white', py: { xs: 4, md: 6 }, borderBottom: '3px solid #e63946' }}>
           <Container maxWidth="lg">
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
-              <ShoppingCartIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, color: '#e63946' }} />
-              <Typography
-                variant="h3"
-                sx={{
-                  fontWeight: 900,
-                  fontSize: { xs: '1.8rem', md: '2.5rem' },
-                  textTransform: 'uppercase',
-                  letterSpacing: 1,
-                }}
-              >
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <ShoppingCartIcon sx={{ fontSize: { xs: '2.5rem', md: '3.5rem' }, color: '#e63946' }} />
+              <Typography variant="h3" sx={{ fontWeight: 900, fontSize: { xs: '1.8rem', md: '2.5rem' }, textTransform: 'uppercase', letterSpacing: 1 }}>
                 Mi Carrito
               </Typography>
             </Box>
@@ -77,12 +54,12 @@ const Cart = () => {
         </Box>
 
         <Container maxWidth="lg">
-          <Box sx={{ textAlign: 'center', py: { xs: 6, md: 10 }, px: { xs: 2, md: 0 } }}>
-            <ShoppingCartIcon sx={{ fontSize: { xs: '4rem', md: '6rem' }, color: '#e63946', mb: 2, opacity: 0.5 }} />
+          <Box sx={{ textAlign: 'center', py: { xs: 8, md: 12 } }}>
+            <ShoppingCartIcon sx={{ fontSize: { xs: '5rem', md: '7rem' }, color: '#e63946', mb: 3, opacity: 0.3 }} />
             <Typography variant="h4" sx={{ fontWeight: 900, mb: 2, fontSize: { xs: '1.5rem', md: '2rem' }, textTransform: 'uppercase' }}>
               Tu carrito está vacío
             </Typography>
-            <Typography sx={{ color: '#666', mb: 3, fontSize: { xs: '0.9rem', md: '1rem' } }}>
+            <Typography sx={{ color: '#999', mb: 4, fontSize: { xs: '0.95rem', md: '1.05rem' } }}>
               Agrega zapatillas a tu carrito para ver el resumen aquí
             </Typography>
             <Button
@@ -94,10 +71,15 @@ const Cart = () => {
                 fontWeight: 800,
                 textTransform: 'uppercase',
                 letterSpacing: 1,
-                padding: { xs: '10px 24px', md: '12px 40px' },
-                fontSize: { xs: '0.8rem', md: '0.95rem' },
+                padding: { xs: '12px 32px', md: '14px 48px' },
+                fontSize: { xs: '0.85rem', md: '0.95rem' },
                 borderRadius: '50px',
-                '&:hover': { backgroundColor: '#d62828' },
+                boxShadow: '0 8px 25px rgba(230, 57, 70, 0.3)',
+                '&:hover': {
+                  backgroundColor: '#d62828',
+                  transform: 'translateY(-3px)',
+                  boxShadow: '0 12px 35px rgba(230, 57, 70, 0.4)',
+                },
               }}
             >
               Ir al Catálogo
@@ -108,47 +90,28 @@ const Cart = () => {
     );
   }
 
-  // SI HAY PRODUCTOS
   return (
-    <Box sx={{ width: '100%', overflow: 'hidden', minHeight: '80vh' }}>
-      {/* HEADER */}
-      <Box
-        sx={{
-          background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)',
-          color: 'white',
-          py: { xs: 3, md: 5 },
-          px: { xs: 2, md: 0 },
-          mb: { xs: 3, md: 4 },
-          borderBottom: '3px solid #e63946',
-        }}
-      >
+    <Box sx={{ width: '100%', overflow: 'hidden', minHeight: '85vh', background: '#fafafa' }}>
+      {/* HEADER PREMIUM */}
+      <Box sx={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)', color: 'white', py: { xs: 4, md: 6 }, borderBottom: '3px solid #e63946' }}>
         <Container maxWidth="lg">
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
-            <ShoppingCartIcon sx={{ fontSize: { xs: '2rem', md: '3rem' }, color: '#e63946' }} />
-            <Typography
-              variant="h3"
-              sx={{
-                fontWeight: 900,
-                fontSize: { xs: '1.8rem', md: '2.5rem' },
-                textTransform: 'uppercase',
-                letterSpacing: 1,
-              }}
-            >
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+            <ShoppingCartIcon sx={{ fontSize: { xs: '2.5rem', md: '3.5rem' }, color: '#e63946' }} />
+            <Typography variant="h3" sx={{ fontWeight: 900, fontSize: { xs: '1.8rem', md: '2.5rem' }, textTransform: 'uppercase', letterSpacing: 1 }}>
               Mi Carrito
             </Typography>
           </Box>
-          <Typography sx={{ color: '#999', fontSize: { xs: '0.9rem', md: '1rem' } }}>
+          <Typography sx={{ color: '#ccc', fontSize: { xs: '0.9rem', md: '1rem' } }}>
             {cartItems.length} {cartItems.length === 1 ? 'producto' : 'productos'} en tu carrito
           </Typography>
         </Container>
       </Box>
 
-      <Container maxWidth="lg">
-        <Grid container spacing={{ xs: 2, md: 3 }} sx={{ mb: { xs: 4, md: 6 }, px: { xs: 1, md: 0 } }}>
-          {/* CONTENEDOR PRODUCTOS */}
-          <Grid item xs={12} md={8}>
-            {/* MOSTRAR SOLO EN MOBILE Y TABLET - TARJETAS */}
-            <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 3, md: 4 } }}>
+        <Grid container spacing={{ xs: 2, md: 3 }}>
+          {/* PRODUCTOS - MOBILE */}
+          <Grid item xs={12} md={8} sx={{ display: { xs: 'block', md: 'none' } }}>
+            <Box>
               {cartItems.map((item, index) => {
                 const product = getProductInfo(item.id);
                 const totalPrice = product.price * item.quantity;
@@ -156,48 +119,99 @@ const Cart = () => {
                 return (
                   <Card
                     key={index}
+                    elevation={0}
                     sx={{
                       mb: 2,
                       border: '1px solid #e0e0e0',
                       borderRadius: '12px',
-                      '&:hover': { boxShadow: '0 4px 12px rgba(230, 57, 70, 0.15)' },
+                      overflow: 'hidden',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        boxShadow: '0 8px 20px rgba(230, 57, 70, 0.15)',
+                        transform: 'translateY(-4px)',
+                      },
                     }}
                   >
-                    <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
-                      <Typography sx={{ fontWeight: 900, fontSize: { xs: '1rem', sm: '1.1rem' }, mb: 2, textTransform: 'uppercase', color: '#333' }}>
-                        {product.name}
-                      </Typography>
+                    <CardContent sx={{ p: { xs: 2.5, sm: 3 } }}>
+                      {/* Producto */}
+                      <Box sx={{ mb: 2.5 }}>
+                        <Typography sx={{ fontWeight: 900, fontSize: { xs: '1.05rem', sm: '1.15rem' }, color: '#0a0a0a', textTransform: 'uppercase', mb: 0.5 }}>
+                          {product.name}
+                        </Typography>
+                        <Typography sx={{ color: '#e63946', fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: 0.5 }}>
+                          {product.brand}
+                        </Typography>
+                      </Box>
 
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                        <Typography sx={{ fontWeight: 700, color: '#666', fontSize: '0.9rem' }}>Cantidad:</Typography>
-                        <IconButton size="small" onClick={() => decreaseQuantity(item.id)} sx={{ color: '#e63946' }}>
+                      {/* Cantidad */}
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2.5, p: 1.5, backgroundColor: '#f5f5f5', borderRadius: '8px' }}>
+                        <Typography sx={{ fontWeight: 700, color: '#666', fontSize: '0.9rem', flex: 1 }}>Cantidad:</Typography>
+                        <IconButton
+                          size="small"
+                          onClick={() => decreaseQuantity(item.id)}
+                          sx={{
+                            color: '#e63946',
+                            backgroundColor: 'white',
+                            border: '1px solid #e0e0e0',
+                            '&:hover': { backgroundColor: '#ffe0e0', borderColor: '#e63946' },
+                          }}
+                        >
                           <RemoveIcon fontSize="small" />
                         </IconButton>
                         <TextField
                           type="number"
                           value={item.quantity}
                           InputProps={{ readOnly: true }}
-                          sx={{ width: '50px', '& input': { textAlign: 'center', fontWeight: 700 } }}
+                          sx={{
+                            width: '50px',
+                            '& .MuiOutlinedInput-root': { height: '32px' },
+                            '& input': { textAlign: 'center', fontWeight: 800, fontSize: '0.95rem' },
+                          }}
                           size="small"
                         />
-                        <IconButton size="small" onClick={() => increaseQuantity(item.id)} sx={{ color: '#e63946' }}>
+                        <IconButton
+                          size="small"
+                          onClick={() => increaseQuantity(item.id)}
+                          sx={{
+                            color: '#e63946',
+                            backgroundColor: 'white',
+                            border: '1px solid #e0e0e0',
+                            '&:hover': { backgroundColor: '#ffe0e0', borderColor: '#e63946' },
+                          }}
+                        >
                           <AddIcon fontSize="small" />
                         </IconButton>
                       </Box>
 
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                        <Typography sx={{ color: '#666', fontSize: '0.9rem' }}>Unitario: ${product.price}</Typography>
-                        <Typography sx={{ fontWeight: 900, color: '#e63946', fontSize: { xs: '1rem', sm: '1.2rem' } }}>
-                          Total: ${totalPrice}
-                        </Typography>
+                      {/* Precios */}
+                      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2, mb: 2.5, p: 1.5, backgroundColor: '#f9f9f9', borderRadius: '8px' }}>
+                        <Box>
+                          <Typography sx={{ color: '#999', fontSize: '0.8rem', fontWeight: 600, mb: 0.5 }}>Unitario</Typography>
+                          <Typography sx={{ fontWeight: 700, color: '#333', fontSize: '1rem' }}>${product.price}</Typography>
+                        </Box>
+                        <Box>
+                          <Typography sx={{ color: '#999', fontSize: '0.8rem', fontWeight: 600, mb: 0.5 }}>Subtotal</Typography>
+                          <Typography sx={{ fontWeight: 900, color: '#e63946', fontSize: '1.1rem' }}>${totalPrice}</Typography>
+                        </Box>
                       </Box>
 
+                      {/* Botón eliminar */}
                       <Button
                         fullWidth
                         variant="outlined"
                         startIcon={<DeleteIcon />}
                         onClick={() => removeFromCart(item.id)}
-                        sx={{ color: '#d32f2f', borderColor: '#d32f2f', fontWeight: 700, '&:hover': { backgroundColor: '#ffebee' } }}
+                        sx={{
+                          color: '#d32f2f',
+                          borderColor: '#d32f2f',
+                          fontWeight: 700,
+                          textTransform: 'uppercase',
+                          fontSize: '0.8rem',
+                          '&:hover': {
+                            backgroundColor: '#ffebee',
+                            borderColor: '#d32f2f',
+                          },
+                        }}
                       >
                         Eliminar
                       </Button>
@@ -206,95 +220,162 @@ const Cart = () => {
                 );
               })}
             </Box>
-
-            {/* MOSTRAR SOLO EN DESKTOP - TABLA */}
-            <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-              <Paper elevation={0} sx={{ border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden' }}>
-                <Box sx={{ backgroundColor: '#f5f5f5', p: 2, display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 2, fontWeight: 900, textTransform: 'uppercase' }}>
-                  <Box>Producto</Box>
-                  <Box sx={{ textAlign: 'center' }}>Cantidad</Box>
-                  <Box sx={{ textAlign: 'right' }}>Precio</Box>
-                  <Box sx={{ textAlign: 'right' }}>Acción</Box>
-                </Box>
-
-                {cartItems.map((item, index) => {
-                  const product = getProductInfo(item.id);
-                  const totalPrice = product.price * item.quantity;
-
-                  return (
-                    <Box
-                      key={index}
-                      sx={{
-                        p: 2,
-                        display: 'grid',
-                        gridTemplateColumns: '2fr 1fr 1fr 1fr',
-                        gap: 2,
-                        alignItems: 'center',
-                        borderBottom: '1px solid #e0e0e0',
-                        '&:hover': { backgroundColor: '#f9f9f9' },
-                      }}
-                    >
-                      <Box>
-                        <Typography sx={{ fontWeight: 700, color: '#333' }}>{product.name}</Typography>
-                      </Box>
-
-                      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
-                        <IconButton size="small" onClick={() => decreaseQuantity(item.id)} sx={{ color: '#e63946' }}>
-                          <RemoveIcon fontSize="small" />
-                        </IconButton>
-                        <TextField
-                          type="number"
-                          value={item.quantity}
-                          InputProps={{ readOnly: true }}
-                          sx={{ width: '50px', '& input': { textAlign: 'center', fontWeight: 700 } }}
-                          size="small"
-                        />
-                        <IconButton size="small" onClick={() => increaseQuantity(item.id)} sx={{ color: '#e63946' }}>
-                          <AddIcon fontSize="small" />
-                        </IconButton>
-                      </Box>
-
-                      <Box sx={{ textAlign: 'right', fontWeight: 700, color: '#e63946' }}>${totalPrice}</Box>
-
-                      <Box sx={{ textAlign: 'right' }}>
-                        <IconButton onClick={() => removeFromCart(item.id)} sx={{ color: '#d32f2f' }}>
-                          <DeleteIcon />
-                        </IconButton>
-                      </Box>
-                    </Box>
-                  );
-                })}
-              </Paper>
-            </Box>
           </Grid>
 
-          {/* RESUMEN - SIDEBAR */}
+          {/* PRODUCTOS - DESKTOP */}
+          <Grid item xs={12} md={8} sx={{ display: { xs: 'none', md: 'block' } }}>
+            <Card elevation={0} sx={{ border: '1px solid #e0e0e0', borderRadius: '12px', overflow: 'hidden' }}>
+              {/* Header Tabla */}
+              <Box
+                sx={{
+                  background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)',
+                  color: 'white',
+                  p: 2.5,
+                  display: 'grid',
+                  gridTemplateColumns: '2fr 1.2fr 1fr 0.8fr',
+                  gap: 2,
+                  fontWeight: 900,
+                  textTransform: 'uppercase',
+                  fontSize: '0.9rem',
+                  letterSpacing: 0.5,
+                }}
+              >
+                <Box>Producto</Box>
+                <Box sx={{ textAlign: 'center' }}>Cantidad</Box>
+                <Box sx={{ textAlign: 'right' }}>Precio</Box>
+                <Box sx={{ textAlign: 'center' }}>Acción</Box>
+              </Box>
+
+              {/* Filas */}
+              {cartItems.map((item, index) => {
+                const product = getProductInfo(item.id);
+                const totalPrice = product.price * item.quantity;
+
+                return (
+                  <Box
+                    key={index}
+                    sx={{
+                      p: 2.5,
+                      display: 'grid',
+                      gridTemplateColumns: '2fr 1.2fr 1fr 0.8fr',
+                      gap: 2,
+                      alignItems: 'center',
+                      borderBottom: index !== cartItems.length - 1 ? '1px solid #e0e0e0' : 'none',
+                      '&:hover': {
+                        backgroundColor: '#f9f9f9',
+                      },
+                      transition: 'background-color 0.3s ease',
+                    }}
+                  >
+                    {/* Producto */}
+                    <Box>
+                      <Typography sx={{ fontWeight: 900, color: '#0a0a0a', fontSize: '0.95rem' }}>{product.name}</Typography>
+                      <Typography sx={{ color: '#e63946', fontWeight: 700, fontSize: '0.75rem', textTransform: 'uppercase', mt: 0.5 }}>
+                        {product.brand}
+                      </Typography>
+                    </Box>
+
+                    {/* Cantidad */}
+                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0.5 }}>
+                      <IconButton
+                        size="small"
+                        onClick={() => decreaseQuantity(item.id)}
+                        sx={{
+                          color: '#e63946',
+                          backgroundColor: 'white',
+                          border: '1px solid #e0e0e0',
+                          '&:hover': { backgroundColor: '#ffe0e0' },
+                        }}
+                      >
+                        <RemoveIcon fontSize="small" />
+                      </IconButton>
+                      <TextField
+                        type="number"
+                        value={item.quantity}
+                        InputProps={{ readOnly: true }}
+                        sx={{
+                          width: '45px',
+                          '& .MuiOutlinedInput-root': { height: '32px' },
+                          '& input': { textAlign: 'center', fontWeight: 800 },
+                        }}
+                        size="small"
+                      />
+                      <IconButton
+                        size="small"
+                        onClick={() => increaseQuantity(item.id)}
+                        sx={{
+                          color: '#e63946',
+                          backgroundColor: 'white',
+                          border: '1px solid #e0e0e0',
+                          '&:hover': { backgroundColor: '#ffe0e0' },
+                        }}
+                      >
+                        <AddIcon fontSize="small" />
+                      </IconButton>
+                    </Box>
+
+                    {/* Precio */}
+                    <Box sx={{ textAlign: 'right' }}>
+                      <Typography sx={{ fontWeight: 900, color: '#e63946', fontSize: '1.05rem' }}>${totalPrice}</Typography>
+                    </Box>
+
+                    {/* Eliminar */}
+                    <Box sx={{ textAlign: 'center' }}>
+                      <IconButton
+                        onClick={() => removeFromCart(item.id)}
+                        sx={{
+                          color: '#d32f2f',
+                          backgroundColor: '#ffebee',
+                          '&:hover': { backgroundColor: '#ffcdd2' },
+                        }}
+                        size="small"
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </Box>
+                  </Box>
+                );
+              })}
+            </Card>
+          </Grid>
+
+          {/* RESUMEN */}
           <Grid item xs={12} md={4}>
-            <Card elevation={0} sx={{ border: '2px solid #e63946', borderRadius: '12px', position: { xs: 'relative', md: 'sticky' }, top: { md: 20 }, p: { xs: 2, sm: 3 } }}>
-              <Typography sx={{ fontWeight: 900, fontSize: { xs: '1.2rem', md: '1.4rem' }, mb: 3, textTransform: 'uppercase', color: '#0a0a0a' }}>
+            <Card
+              elevation={0}
+              sx={{
+                background: 'linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%)',
+                border: '2px solid #e63946',
+                borderRadius: '12px',
+                p: { xs: 3, md: 3.5 },
+                position: { xs: 'relative', md: 'sticky' },
+                top: { md: 20 },
+              }}
+            >
+              <Typography sx={{ fontWeight: 900, fontSize: { xs: '1.3rem', md: '1.4rem' }, mb: 3, textTransform: 'uppercase', color: '#0a0a0a', textAlign: 'center' }}>
                 Resumen del Pedido
               </Typography>
 
-              <Box sx={{ mb: 2 }}>
+              <Box sx={{ mb: 3, p: 2, backgroundColor: 'white', borderRadius: '8px' }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1.5 }}>
-                  <Typography sx={{ color: '#666', fontSize: { xs: '0.9rem', md: '1rem' } }}>Subtotal</Typography>
-                  <Typography sx={{ fontWeight: 700, fontSize: { xs: '0.9rem', md: '1rem' } }}>${subtotal}</Typography>
+                  <Typography sx={{ color: '#666', fontWeight: 600 }}>Subtotal</Typography>
+                  <Typography sx={{ fontWeight: 800, color: '#333' }}>${subtotal}</Typography>
                 </Box>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1.5 }}>
-                  <Typography sx={{ color: '#666', fontSize: { xs: '0.9rem', md: '1rem' } }}>Envío</Typography>
-                  <Typography sx={{ fontWeight: 700, fontSize: { xs: '0.9rem', md: '1rem' } }}>Gratis</Typography>
+                  <Typography sx={{ color: '#666', fontWeight: 600 }}>Envío</Typography>
+                  <Typography sx={{ fontWeight: 800, color: '#27ae60' }}>Gratis</Typography>
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1.5 }}>
-                  <Typography sx={{ color: '#666', fontSize: { xs: '0.9rem', md: '1rem' } }}>Impuestos (19%)</Typography>
-                  <Typography sx={{ fontWeight: 700, fontSize: { xs: '0.9rem', md: '1rem' } }}>${impuesto}</Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <Typography sx={{ color: '#666', fontWeight: 600 }}>Impuestos (19%)</Typography>
+                  <Typography sx={{ fontWeight: 800, color: '#333' }}>${impuesto}</Typography>
                 </Box>
               </Box>
 
-              <Divider sx={{ my: 2, backgroundColor: '#e0e0e0' }} />
+              <Divider sx={{ my: 2.5, backgroundColor: '#e0e0e0' }} />
 
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-                <Typography sx={{ fontWeight: 900, fontSize: { xs: '1.1rem', md: '1.3rem' }, textTransform: 'uppercase' }}>Total</Typography>
-                <Typography sx={{ fontWeight: 900, fontSize: { xs: '1.3rem', md: '1.5rem' }, color: '#e63946' }}>${total}</Typography>
+              <Box sx={{ p: 2, backgroundColor: '#ffe0e0', borderRadius: '8px', mb: 3, textAlign: 'center' }}>
+                <Typography sx={{ color: '#666', fontSize: '0.85rem', fontWeight: 600, mb: 0.5, textTransform: 'uppercase' }}>Total a Pagar</Typography>
+                <Typography sx={{ fontWeight: 900, fontSize: '1.8rem', color: '#e63946' }}>${total}</Typography>
               </Box>
 
               <Button
@@ -302,19 +383,19 @@ const Cart = () => {
                 variant="contained"
                 onClick={handleCheckout}
                 sx={{
-                  backgroundColor: '#e63946',
+                  background: 'linear-gradient(135deg, #e63946 0%, #d62828 100%)',
                   color: 'white',
                   fontWeight: 800,
                   textTransform: 'uppercase',
                   letterSpacing: 1,
-                  padding: { xs: '12px', md: '14px' },
-                  fontSize: { xs: '0.8rem', md: '0.9rem' },
+                  padding: '14px',
+                  fontSize: '0.95rem',
                   borderRadius: '50px',
                   mb: 2,
+                  boxShadow: '0 8px 20px rgba(230, 57, 70, 0.3)',
                   '&:hover': {
-                    backgroundColor: '#d62828',
-                    transform: 'translateY(-2px)',
-                    boxShadow: '0 8px 20px rgba(230, 57, 70, 0.3)',
+                    transform: 'translateY(-3px)',
+                    boxShadow: '0 12px 30px rgba(230, 57, 70, 0.4)',
                   },
                 }}
               >
@@ -326,11 +407,16 @@ const Cart = () => {
                 variant="outlined"
                 onClick={clearCart}
                 sx={{
-                  color: '#666',
+                  color: '#999',
                   borderColor: '#ddd',
                   fontWeight: 700,
                   textTransform: 'uppercase',
-                  '&:hover': { backgroundColor: '#f5f5f5', borderColor: '#999' },
+                  fontSize: '0.85rem',
+                  borderRadius: '8px',
+                  '&:hover': {
+                    backgroundColor: '#f5f5f5',
+                    borderColor: '#999',
+                  },
                 }}
               >
                 Vaciar Carrito
