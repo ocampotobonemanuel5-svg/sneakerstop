@@ -5,6 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import { useCart } from '../hooks/useCart';
+import GitHubSection from '../components/GitHubSection';
 
 const MainLayout = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -180,6 +181,8 @@ const MainLayout = () => {
           <Outlet />
         </Container>
       </Box>
+
+      <GitHubSection />
 
       {/* FOOTER MEJORADO */}
       <Box
