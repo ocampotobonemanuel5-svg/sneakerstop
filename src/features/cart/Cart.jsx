@@ -23,6 +23,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useFavorites } from '../../hooks/useFavorites';
 
 const Cart = () => {
@@ -49,22 +50,191 @@ const Cart = () => {
     clearCart();
   };
 
+  // CARRITO VACÍO - DISEÑO PREMIUM
   if (cartItems.length === 0) {
     return (
-      <Box sx={{ width: '100%', minHeight: '80vh' }}>
-        <Container maxWidth="lg" sx={{ textAlign: 'center', py: { xs: 8, md: 12 } }}>
-          <Typography variant="h3" sx={{ fontWeight: 900, mb: 2, fontSize: { xs: '1.8rem', md: '2.5rem' } }}>
-            Tu carrito está vacío
-          </Typography>
-          <Typography sx={{ color: '#999', mb: 4 }}>Agrega zapatillas a tu carrito</Typography>
-          <Button href="/articulos" variant="contained" sx={{ backgroundColor: '#e63946', color: 'white', fontWeight: 800, textTransform: 'uppercase', borderRadius: '50px', '&:hover': { backgroundColor: '#d62828' } }}>
-            Ir al Catálogo
-          </Button>
+      <Box sx={{ width: '100%', minHeight: '100vh', background: 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)' }}>
+        {/* DECORACIÓN FONDO */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '-200px',
+            right: '-200px',
+            width: '600px',
+            height: '600px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(230, 57, 70, 0.08) 0%, transparent 70%)',
+            zIndex: 0,
+            pointerEvents: 'none',
+          }}
+        />
+        <Box
+          sx={{
+            position: 'absolute',
+            bottom: '-150px',
+            left: '-150px',
+            width: '400px',
+            height: '400px',
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(10, 10, 10, 0.05) 0%, transparent 70%)',
+            zIndex: 0,
+            pointerEvents: 'none',
+          }}
+        />
+
+        <Container maxWidth="lg" sx={{ py: { xs: 6, md: 10 }, position: 'relative', zIndex: 1 }}>
+          <Box sx={{ textAlign: 'center' }}>
+            {/* ICONO ANIMADO */}
+            <Box
+              sx={{
+                mb: 4,
+                animation: 'float 3s ease-in-out infinite',
+                '@keyframes float': {
+                  '0%, 100%': { transform: 'translateY(0px)' },
+                  '50%': { transform: 'translateY(-30px)' },
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  width: { xs: '100px', md: '140px' },
+                  height: { xs: '100px', md: '140px' },
+                  background: 'linear-gradient(135deg, #e63946 0%, #d62828 100%)',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto',
+                  boxShadow: '0 20px 60px rgba(230, 57, 70, 0.25)',
+                }}
+              >
+                <ShoppingCartIcon sx={{ fontSize: { xs: '3rem', md: '4rem' }, color: 'white' }} />
+              </Box>
+            </Box>
+
+            {/* TÍTULO */}
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 900,
+                fontSize: { xs: '2rem', md: '3rem' },
+                mb: 2,
+                textTransform: 'uppercase',
+                letterSpacing: 1,
+                color: '#0a0a0a',
+                animation: 'slideInDown 0.8s ease-out',
+                '@keyframes slideInDown': {
+                  from: { opacity: 0, transform: 'translateY(-30px)' },
+                  to: { opacity: 1, transform: 'translateY(0)' },
+                },
+              }}
+            >
+              Tu carrito está <span style={{ color: '#e63946' }}>vacío</span>
+            </Typography>
+
+            {/* DESCRIPCIÓN */}
+            <Typography
+              sx={{
+                color: '#666',
+                fontSize: { xs: '1rem', md: '1.15rem' },
+                maxWidth: 600,
+                mx: 'auto',
+                mb: 4,
+                lineHeight: 1.7,
+                fontWeight: 500,
+                animation: 'slideInUp 0.8s ease-out 0.2s both',
+                '@keyframes slideInUp': {
+                  from: { opacity: 0, transform: 'translateY(30px)' },
+                  to: { opacity: 1, transform: 'translateY(0)' },
+                },
+              }}
+            >
+              ¡Oops! Parece que aún no has agregado ninguna zapatilla a tu carrito. Explora nuestra colección premium y encuentra tu par favorito.
+            </Typography>
+
+            {/* CARACTERÍSTICAS */}
+            <Grid container spacing={2} sx={{ mb: 5, maxWidth: 600, mx: 'auto', animation: 'slideInUp 0.8s ease-out 0.4s both' }}>
+              <Grid item xs={12} sm={6}>
+                <Box sx={{ p: 2, backgroundColor: 'rgba(255, 255, 255, 0.8)', borderRadius: '12px', backdropFilter: 'blur(10px)' }}>
+                  <Typography sx={{ fontWeight: 700, color: '#e63946', fontSize: '0.9rem', mb: 0.5 }}>✓ Envío Gratis</Typography>
+                  <Typography sx={{ color: '#666', fontSize: '0.85rem' }}>En compras mayores a $100</Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Box sx={{ p: 2, backgroundColor: 'rgba(255, 255, 255, 0.8)', borderRadius: '12px', backdropFilter: 'blur(10px)' }}>
+                  <Typography sx={{ fontWeight: 700, color: '#e63946', fontSize: '0.9rem', mb: 0.5 }}>✓ Garantía</Typography>
+                  <Typography sx={{ color: '#666', fontSize: '0.85rem' }}>Autenticidad en 100%</Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Box sx={{ p: 2, backgroundColor: 'rgba(255, 255, 255, 0.8)', borderRadius: '12px', backdropFilter: 'blur(10px)' }}>
+                  <Typography sx={{ fontWeight: 700, color: '#e63946', fontSize: '0.9rem', mb: 0.5 }}>✓ Devoluciones</Typography>
+                  <Typography sx={{ color: '#666', fontSize: '0.85rem' }}>Gratis en 30 días</Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <Box sx={{ p: 2, backgroundColor: 'rgba(255, 255, 255, 0.8)', borderRadius: '12px', backdropFilter: 'blur(10px)' }}>
+                  <Typography sx={{ fontWeight: 700, color: '#e63946', fontSize: '0.9rem', mb: 0.5 }}>✓ Soporte</Typography>
+                  <Typography sx={{ color: '#666', fontSize: '0.85rem' }}>24/7 disponible</Typography>
+                </Box>
+              </Grid>
+            </Grid>
+
+            {/* BOTONES */}
+            <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap', animation: 'slideInUp 0.8s ease-out 0.6s both' }}>
+              <Button
+                href="/articulos"
+                variant="contained"
+                sx={{
+                  background: 'linear-gradient(135deg, #e63946 0%, #d62828 100%)',
+                  color: 'white',
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  letterSpacing: 1,
+                  padding: { xs: '12px 32px', md: '14px 48px' },
+                  fontSize: { xs: '0.85rem', md: '0.95rem' },
+                  borderRadius: '50px',
+                  boxShadow: '0 10px 30px rgba(230, 57, 70, 0.3)',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'translateY(-4px)',
+                    boxShadow: '0 15px 40px rgba(230, 57, 70, 0.4)',
+                  },
+                }}
+              >
+                Explorar Catálogo
+              </Button>
+              <Button
+                href="/"
+                variant="outlined"
+                sx={{
+                  color: '#e63946',
+                  borderColor: '#e63946',
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  letterSpacing: 1,
+                  padding: { xs: '12px 32px', md: '14px 48px' },
+                  fontSize: { xs: '0.85rem', md: '0.95rem' },
+                  borderRadius: '50px',
+                  border: '2px solid #e63946',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    backgroundColor: '#e63946',
+                    color: 'white',
+                    transform: 'translateY(-4px)',
+                  },
+                }}
+              >
+                Volver a Inicio
+              </Button>
+            </Box>
+          </Box>
         </Container>
       </Box>
     );
   }
 
+  // CARRITO CON PRODUCTOS
   return (
     <Box sx={{ width: '100%', minHeight: '85vh', background: '#ffffff', py: { xs: 3, md: 4 } }}>
       <Container maxWidth="lg">
