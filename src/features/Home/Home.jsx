@@ -2,7 +2,7 @@ import { Typography, Card, CardContent, Box, Button, Container } from '@mui/mate
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import GitHubSection from '../components/GitHubSection';
+import GitHubSection from '../../components/GitHubSection';
 
 // Datos de las leyendas
 const artists = [
