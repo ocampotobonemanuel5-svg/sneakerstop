@@ -1,9 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
 import MainLayout from './layouts/MainLayout';
 import Home from './features/Home/Home';
 import Articles from './features/articles/Articles';
-import Cart from './features/Cart/Cart';
+import Cart from './features/cart/Cart';
 
 // Componente Cuenta mejorado y completo
 const Cuenta = () => (
