@@ -37,3 +37,6 @@ src/
 ├── layouts/         # Estructuras de página (MainLayout)
 ├── App.jsx          # Enrutador principal y componentes base
 └── index.css        # Variables de diseño y estilos globales
+
+Emanuel Ocampo Tobon
+3236538 ANALISIS Y DESARROLO
