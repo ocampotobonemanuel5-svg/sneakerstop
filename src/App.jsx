@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
 import MainLayout from './layouts/MainLayout';
 import Home from './features/Home/Home';
