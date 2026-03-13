@@ -1,21 +1,39 @@
-<<<<<<< HEAD
-# React + Vite
+# 👟 SneakersTop - E-commerce de Calzado Premium
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+¡Bienvenido a **SneakersTop**! Una plataforma de comercio electrónico moderna y de alto rendimiento dedicada a los amantes de las zapatillas. Este proyecto combina un diseño inspirado en la cultura del baloncesto (Jordan Brand) con una arquitectura de software robusta y escalable.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📝 Descripción
+SneakersTop es una aplicación web de una sola página (SPA) que ofrece una experiencia de compra fluida para zapatillas de marcas icónicas como Nike, Jordan y Adidas. El proyecto se centra en la velocidad, una interfaz de usuario visualmente impactante y una navegación intuitiva, permitiendo a los usuarios explorar leyendas del deporte y gestionar sus productos favoritos.
 
-## React Compiler
+## 🚀 Características Principales
+* **Interfaz Premium:** Diseño oscuro con acentos en "Rojo Jordan", utilizando Material UI para una estética moderna y profesional.
+* **Catálogo Dinámico:** Filtrado y visualización de artículos con animaciones de entrada suaves.
+* **Carrito de Compras:** Gestión completa de productos con persistencia de datos mediante `localStorage`.
+* **Diseño Responsivo:** Optimizado para dispositivos móviles, tablets y computadoras de escritorio.
+* **Navegación Fluida:** Implementación de `react-router-dom` para transiciones sin recargas de página.
+* **Perfil de Usuario:** Sección dedicada para gestionar pedidos, favoritos e información personal.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🎨 Interfaz Gráfica
+La interfaz utiliza una paleta de colores basada en el lujo y la energía deportiva:
+* **Colores:** Negro Premium (`#0a0a0a`), Rojo Jordan (`#e63946`) y Blanco Puro.
+* **Componentes:** Uso intensivo de **Material UI (MUI)** para botones, contenedores y tipografía.
+* **Animaciones:** Efectos de *hover* en tarjetas de productos, transiciones de escala y animaciones de carga personalizadas en CSS.
 
-## Expanding the ESLint configuration
+## 🏗️ Arquitectura del Proyecto
+El proyecto sigue una estructura basada en **Features (Funcionalidades)** para facilitar el mantenimiento y la escalabilidad:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# sneakerstop
- E-commerce de zapatillas con React, Material UI y Hooks
->>>>>>> fafcd5e6b332992295a7e4cad2b3634300956d78
+```text
+src/
+├── assets/          # Imágenes y recursos estáticos
+├── components/      # Componentes reutilizables globales
+├── features/        # Módulos principales del negocio
+│   ├── Home/        # Landing page y leyendas
+│   ├── articles/    # Catálogo de zapatillas
+│   ├── cart/        # Lógica y vista del carrito
+│   └── aout/        # Sección informativa
+├── hooks/           # Lógica compartida (useCart, useLocalStorage)
+├── layouts/         # Estructuras de página (MainLayout)
+├── App.jsx          # Enrutador principal y componentes base
+└── index.css        # Variables de diseño y estilos globales

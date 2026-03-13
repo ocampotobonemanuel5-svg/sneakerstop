@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
 import MainLayout from './layouts/MainLayout';
 import Home from './features/Home/Home';
@@ -58,7 +58,7 @@ const Cuenta = () => (
                 Nombre
               </Typography>
               <Typography sx={{ fontWeight: 700, fontSize: '1.1rem' }}>
-                [Tu nombre aquí]
+                Emanuel Ocampo Tobon
               </Typography>
             </Box>
             <Box sx={{ mb: 2 }}>
@@ -171,26 +171,26 @@ const Cuenta = () => (
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* El MainLayout envuelve todo para mantener Header y Footer siempre visibles */}
         <Route path="/" element={<MainLayout />}>
           
-          {/* RUTA DE INICIO: Muestra las Leyendas (Michael Jordan, Travis, LeBron) */}
+          {/* RUTA DE INICIO: Muestra las Leyendas */}
           <Route index element={<Home />} />
           
-          {/* RUTA DE ARTÍCULOS: Muestra el catálogo de zapatillas con filtros */}
+          {/* RUTA DE ARTÍCULOS: Catálogo con filtros */}
           <Route path="articulos" element={<Articles />} />
 
-          {/* RUTA DE CARRITO: Carrito de compras con favoritos */}
+          {/* RUTA DE CARRITO: Compras y favoritos */}
           <Route path="carrito" element={<Cart />} />
           
-          {/* RUTA DE CUENTA: Perfil del usuario con pedidos y favoritos */}
+          {/* RUTA DE CUENTA: Perfil del usuario */}
           <Route path="cuenta" element={<Cuenta />} />
           
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
